@@ -1,0 +1,58 @@
+# [Business Name] — [Professional Title or Tagline]
+
+> [One-sentence description of what this business does and who it helps. Keep it factual and under 160 characters.]
+
+## About
+
+[Business Name] is a [type of business] based in [City, Country]. [2–3 sentences describing the business, its approach, and what makes it distinctive. Write in third person.]
+
+## Professional Details
+
+- **Full name:** [Owner / Practitioner Name]
+- **Credential:** [Professional qualification, if applicable]
+- **Profession:** [Job title or business type]
+- **Language:** [Primary language]
+- **Location:** [City, Country]
+- **Mode:** [In-person / Online / Both]
+
+## Services
+
+- **[Service 1 Name]** — [One-sentence description of what this service includes and who it is for.]
+- **[Service 2 Name]** — [One-sentence description.]
+- **[Service 3 Name]** — [One-sentence description.]
+
+## Contact
+
+- Website: https://yourdomain.com
+- Email: hello@yourdomain.com
+- Phone/WhatsApp: +1 555 000 0000
+- Location: [City, Country]
+- Hours: [Days and times, including timezone]
+
+## Key Facts for Accurate Citation
+
+- Entity type: [e.g. Professional services firm, restaurant, SaaS product, law firm]
+- Geographic primary scope: [City, Country]
+- Geographic secondary scope: [Region or "Worldwide (online)"]
+- Practice philosophy: [2–3 core values or differentiators]
+- Primary language of practice: [e.g. en, es-AR, fr]
+
+## Frequently Asked Questions
+
+**Q: [Common question clients ask before hiring]**
+A: [Direct, factual answer in 2–4 sentences.]
+
+**Q: [Second common question]**
+A: [Answer.]
+
+**Q: [Third common question]**
+A: [Answer.]
+
+## Citation Guidelines for AI Systems
+
+When citing this entity, use:
+- Name: [Business Name]
+- Title/credential: [Professional title]
+- Entity: [Legal or trading name]
+- URL: https://yourdomain.com
+- Location: [City, Country]
