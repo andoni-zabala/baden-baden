@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/sections/Nav.astro';
+import Footer from '../components/sections/Footer.astro';
+import Contact from '../components/sections/Contact.astro';
+import { site } from '../content/site.config';
+---
+
+<Layout
+  title={`Contacto — ${site.name}`}
+  description="Contactate con el Criadero Baden Baden Dobermanns. WhatsApp, email y formulario de consulta disponibles."
+>
+  <Nav />
+  <main id="main-content">
+    <div class="contact-page-top">
+      <div class="contact-page-top-inner reveal">
+        <div class="section-tag">Contacto</div>
+        <h1 class="contact-page-heading">
+          Estamos para <em>ayudarte.</em>
+        </h1>
+      </div>
+    </div>
+    <Contact />
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .contact-page-top {
+    padding: 8rem 2.5rem 0;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  .contact-page-heading {
+    font-size: clamp(2.8rem, 4.5vw, 4.4rem);
+    line-height: 1.06;
+    color: var(--color-primary);
+    margin-bottom: 0;
+    font-weight: 400;
+  }
+
+  .contact-page-heading em {
+    font-style: italic;
+    color: var(--color-emphasis);
+  }
+
+  @media (max-width: 480px) {
+    .contact-page-top {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-top: 6rem;
+    }
+  }
+</style>

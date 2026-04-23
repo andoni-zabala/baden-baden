@@ -4,7 +4,8 @@ import Button from '../primitives/Button.astro';
 
 function getSocialIcon(platform: string) {
   if (platform === 'instagram') return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`;
-  if (platform === 'linkedin') return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`;
+  if (platform === 'linkedin')  return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`;
+  if (platform === 'facebook')  return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>`;
   return '';
 }
 ---
@@ -31,14 +32,14 @@ function getSocialIcon(platform: string) {
         <div class="detail">
           <span class="detail-icon" aria-hidden="true">📍</span>
           <div>
-            <span class="detail-label">Location</span>
+            <span class="detail-label">Ubicación</span>
             <span class="detail-val">{contact.location}</span>
           </div>
         </div>
         <div class="detail">
           <span class="detail-icon" aria-hidden="true">🕐</span>
           <div>
-            <span class="detail-label">Hours</span>
+            <span class="detail-label">Horarios</span>
             <span class="detail-val">{contact.hours}</span>
           </div>
         </div>
@@ -64,7 +65,7 @@ function getSocialIcon(platform: string) {
       <form class="contact-form" name="contact" data-netlify="true">
         <div class="form-row">
           <div class="form-group">
-            <label for="name">Full name</label>
+            <label for="name">Nombre completo</label>
             <input
               type="text"
               id="name"
@@ -88,7 +89,7 @@ function getSocialIcon(platform: string) {
         <div class="form-group">
           <label for="goal">{contact.formFields.goalLabel}</label>
           <select id="goal" name="goal" required>
-            <option value="" disabled selected>Select an option…</option>
+            <option value="" disabled selected>Seleccioná una opción…</option>
             {contact.formFields.goalOptions.map((opt) => (
               <option value={opt.value}>{opt.label}</option>
             ))}
@@ -223,10 +224,10 @@ function getSocialIcon(platform: string) {
 
   /* Form */
   .contact-form-wrap {
-    background: white;
-    border-radius: 24px;
+    background: var(--color-surface-alt);
+    border-radius: 4px;
     padding: 2.5rem;
-    border: 1.5px solid var(--color-surface-alt);
+    border: 1px solid rgba(255, 255, 255, 0.07);
   }
 
   .contact-form {
@@ -263,8 +264,8 @@ function getSocialIcon(platform: string) {
     font-weight: 400;
     color: var(--color-text);
     background: var(--color-surface);
-    border: 1.5px solid var(--color-surface-alt);
-    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
     padding: 0.75rem 1rem;
     outline: none;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;

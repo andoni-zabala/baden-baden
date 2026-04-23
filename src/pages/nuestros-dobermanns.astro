@@ -1,0 +1,87 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/sections/Nav.astro';
+import Footer from '../components/sections/Footer.astro';
+import DogGrid from '../components/sections/DogGrid.astro';
+import { site, dogs } from '../content/site.config';
+
+const showDogs = dogs.filter((d) => d.category === 'show');
+const obedienceDogs = dogs.filter((d) => d.category === 'obedience');
+---
+
+<Layout
+  title={`Nuestros Dobermanns — ${site.name}`}
+  description="Conocé los Dobermanns campeones del Criadero Baden Baden. Ejemplares de show y obediencia criados con el más alto estándar de la raza."
+>
+  <Nav />
+  <main id="main-content">
+
+    <section class="page-intro">
+      <div class="page-intro-inner">
+        <div class="reveal">
+          <div class="section-tag">Nuestros Dobermanns</div>
+          <h1 class="page-intro-heading">
+            Ejemplares que son <em>orgullo de la raza.</em>
+          </h1>
+          <p class="page-intro-body">
+            Décadas de cría selectiva dan como resultado Dobermanns con el carácter, la belleza y la salud que el estándar internacional exige. Conocé algunos de nuestros ejemplares destacados.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <DogGrid dogs={showDogs} title="Dobermanns de <em>exposición</em>" subtitle="Show" />
+
+    {obedienceDogs.length > 0 && (
+      <div class="obedience-divider">
+        <DogGrid dogs={obedienceDogs} title="Dobermanns de <em>obediencia</em>" subtitle="Obediencia" />
+      </div>
+    )}
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-intro {
+    padding: 8rem 2.5rem 2rem;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  .page-intro-inner {
+    max-width: 720px;
+  }
+
+  .page-intro-heading {
+    font-size: clamp(2.8rem, 4.5vw, 4.4rem);
+    line-height: 1.06;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .page-intro-heading em {
+    font-style: italic;
+    color: var(--color-emphasis);
+  }
+
+  .page-intro-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    font-weight: 300;
+  }
+
+  .obedience-divider {
+    background: var(--color-surface-alt);
+  }
+
+  @media (max-width: 480px) {
+    .page-intro {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      padding-top: 6rem;
+    }
+  }
+</style>

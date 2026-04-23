@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="480" viewBox="0 0 400 480">
+  <rect width="400" height="480" fill="#F0EBE1"/>
+  <g opacity="0.3">
+    <circle cx="200" cy="180" r="60" fill="#B8860B"/>
+    <path d="M120 340 Q200 260 280 340 Q320 380 320 420 L80 420 Q80 380 120 340Z" fill="#B8860B"/>
+    <!-- ears -->
+    <path d="M165 130 L150 80 L190 120Z" fill="#B8860B"/>
+    <path d="M235 130 L250 80 L210 120Z" fill="#B8860B"/>
+  </g>
+  <text x="200" y="455" font-family="Georgia, serif" font-size="13" fill="#B8860B" text-anchor="middle" opacity="0.6">Baden Baden Dobermanns</text>
+</svg>

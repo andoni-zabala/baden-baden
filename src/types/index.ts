@@ -113,6 +113,23 @@ export interface StructuredDataConfig {
   sameAs?: string[];
 }
 
+export interface Dog {
+  name: string;
+  nickname?: string;
+  photo: string;
+  titles?: string[];
+  category?: 'show' | 'obedience' | 'breeding';
+}
+
+export interface Litter {
+  sire: string;
+  dam: string;
+  birthDate?: string;
+  available: boolean;
+  photo?: string;
+  description?: string;
+}
+
 export interface LayoutProps {
   title?: string;
   description?: string;

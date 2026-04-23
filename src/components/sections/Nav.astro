@@ -45,34 +45,24 @@ import Button from '../primitives/Button.astro';
     left: 0;
     right: 0;
     z-index: 100;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .nav.scrolled {
-    background: rgba(250, 247, 240, 0.94);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.07);
+    background: rgba(14, 14, 14, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   }
 
   .nav-inner {
     max-width: 1360px;
     margin: 0 auto;
-    padding: 1.6rem 2.5rem;
+    padding: 1.1rem 2.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: padding 0.3s ease;
-  }
-
-  .nav.scrolled .nav-inner {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
   }
 
   .nav-logo {
     text-decoration: none;
-    color: var(--color-primary);
+    color: #fff;
     display: flex;
     flex-direction: column;
     line-height: 1.15;
@@ -80,14 +70,15 @@ import Button from '../primitives/Button.astro';
 
   .logo-name {
     font-family: var(--font-display);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.03em;
+    color: #fff;
   }
 
   .logo-sub {
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--color-accent);
     font-weight: 400;
@@ -96,30 +87,27 @@ import Button from '../primitives/Button.astro';
   .nav-links {
     display: flex;
     align-items: center;
-    gap: 2.25rem;
+    gap: 1.75rem;
     list-style: none;
   }
 
   .nav-links a {
     text-decoration: none;
-    color: var(--color-text);
-    font-size: 0.78rem;
-    letter-spacing: 0.11em;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
     font-weight: 400;
     transition: color 0.2s ease;
-    opacity: 0.75;
   }
 
   .nav-links a:hover {
-    color: var(--color-primary);
-    opacity: 1;
+    color: #fff;
   }
 
-  /* Override Button styles for nav CTA */
   .nav-cta {
-    font-size: 0.75rem !important;
-    padding: 0.55rem 1.3rem !important;
+    font-size: 0.7rem !important;
+    padding: 0.5rem 1.1rem !important;
   }
 
   /* Hamburger */
@@ -140,7 +128,7 @@ import Button from '../primitives/Button.astro';
     display: block;
     width: 22px;
     height: 1.5px;
-    background: var(--color-primary);
+    background: rgba(255, 255, 255, 0.8);
     transition: all 0.3s ease;
     transform-origin: center;
   }
@@ -156,16 +144,16 @@ import Button from '../primitives/Button.astro';
   /* Mobile menu */
   .mobile-menu {
     display: none;
-    background: var(--color-surface);
-    border-top: 1px solid var(--color-surface-alt);
+    background: #0e0e0e;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
     padding: 1.5rem 2.5rem 2rem;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: max-height 0.35s ease;
   }
 
   .mobile-menu.open {
-    max-height: 400px;
+    max-height: 500px;
   }
 
   .mobile-menu ul {
@@ -177,30 +165,30 @@ import Button from '../primitives/Button.astro';
 
   .mobile-link {
     text-decoration: none;
-    color: var(--color-text);
-    font-family: var(--font-display);
-    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.85rem;
     font-weight: 400;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     transition: color 0.2s ease;
+    display: block;
   }
 
   .mobile-link:hover {
-    color: var(--color-primary);
+    color: #fff;
   }
 
   .mobile-link--cta {
-    color: var(--color-emphasis);
+    color: var(--color-accent) !important;
     border-radius: 0 !important;
     background: none !important;
     padding: 0 !important;
-    font-size: 1.4rem !important;
-    font-family: var(--font-display) !important;
-    font-weight: 400 !important;
-    letter-spacing: 0.02em !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     .nav-links {
       display: none;
     }
@@ -216,13 +204,8 @@ import Button from '../primitives/Button.astro';
 </style>
 
 <script>
-  const nav = document.getElementById('nav')!;
   const toggle = document.getElementById('nav-toggle')!;
   const mobileMenu = document.getElementById('mobile-menu')!;
-
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-  });
 
   toggle.addEventListener('click', () => {
     const isOpen = toggle.classList.toggle('open');

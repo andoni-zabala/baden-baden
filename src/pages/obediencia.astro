@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/sections/Nav.astro';
+import Footer from '../components/sections/Footer.astro';
+import DogGrid from '../components/sections/DogGrid.astro';
+import Button from '../components/primitives/Button.astro';
+import { site, obedienceDogs, primaryCTA } from '../content/site.config';
+---
+
+<Layout
+  title={`Obediencia — ${site.name}`}
+  description="Los Dobermanns de obediencia del Criadero Baden Baden. Ejemplares con SCH y entrenamiento en disciplinas de trabajo."
+>
+  <Nav />
+  <main id="main-content">
+
+    <section class="page-intro">
+      <div class="page-intro-inner">
+        <div class="reveal">
+          <div class="section-tag">Obediencia</div>
+          <h1 class="page-intro-heading">
+            Inteligencia y obediencia al <em>más alto nivel.</em>
+          </h1>
+          <p class="page-intro-body">
+            El Dobermann fue creado como perro de trabajo. En el Criadero Baden Baden criamos y entrenamos ejemplares que demuestran no solo belleza de estructura, sino también la inteligencia y el carácter equilibrado que hacen grande a esta raza.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Obedience description -->
+    <section class="obedience-desc">
+      <div class="obedience-desc-inner">
+        <div class="desc-grid reveal">
+          <div class="desc-card">
+            <div class="desc-icon">◈</div>
+            <h3>SCH — Schutzhund</h3>
+            <p>La prueba de trabajo más completa para el Dobermann. Evalúa rastreo, obediencia y defensa. Nuestro ejemplar Baden Baden King ostenta el título SCH III, el máximo nivel.</p>
+          </div>
+          <div class="desc-card">
+            <div class="desc-icon">◎</div>
+            <h3>Obediencia deportiva</h3>
+            <p>Ejercicios de precisión que demuestran el vínculo entre el perro y su guía. Nuestros ejemplares participan en pruebas nacionales con resultados destacados.</p>
+          </div>
+          <div class="desc-card">
+            <div class="desc-icon">◇</div>
+            <h3>Carácter equilibrado</h3>
+            <p>Todo Dobermann de trabajo debe demostrar un carácter firme pero equilibrado. Nuestros ejemplares pasan evaluaciones de temperamento que garantizan perros seguros y confiables.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <DogGrid dogs={obedienceDogs} title="Nuestros perros de <em>trabajo</em>" subtitle="Obediencia" />
+
+    <section class="obedience-cta">
+      <div class="obedience-cta-inner reveal">
+        <h2>¿Te interesa el <em>trabajo</em> con Dobermanns?</h2>
+        <p>Consultanos sobre nuestro programa de obediencia y los ejemplares disponibles para entrenamiento.</p>
+        <Button cta={primaryCTA} size="large" />
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-intro {
+    padding: 8rem 2.5rem 4rem;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  .page-intro-inner {
+    max-width: 760px;
+  }
+
+  .page-intro-heading {
+    font-size: clamp(2.8rem, 4.5vw, 4.4rem);
+    line-height: 1.06;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .page-intro-heading em {
+    font-style: italic;
+    color: var(--color-emphasis);
+  }
+
+  .page-intro-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    font-weight: 300;
+  }
+
+  /* Description cards */
+  .obedience-desc {
+    background: var(--color-surface-alt);
+    padding: 5rem 2.5rem;
+  }
+
+  .obedience-desc-inner {
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  .desc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .desc-card {
+    background: white;
+    border: 1.5px solid var(--color-surface-alt);
+    border-radius: 20px;
+    padding: 2rem;
+  }
+
+  .desc-icon {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+
+  .desc-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 0.75rem;
+  }
+
+  .desc-card p {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-text-muted);
+    font-weight: 300;
+  }
+
+  /* CTA */
+  .obedience-cta {
+    padding: 6rem 2.5rem;
+    background: var(--color-primary);
+  }
+
+  .obedience-cta-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .obedience-cta-inner h2 {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  .obedience-cta-inner h2 em {
+    font-style: italic;
+    color: var(--color-decorative);
+  }
+
+  .obedience-cta-inner p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  @media (max-width: 1024px) {
+    .desc-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-intro,
+    .obedience-desc,
+    .obedience-cta {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .page-intro {
+      padding-top: 6rem;
+    }
+  }
+</style>

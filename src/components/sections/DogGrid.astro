@@ -1,0 +1,180 @@
+---
+import type { Dog } from '../../types';
+
+interface Props {
+  dogs: Dog[];
+  title?: string;
+  subtitle?: string;
+}
+
+const { dogs, title, subtitle } = Astro.props;
+const placeholder = '/images/placeholder.svg';
+---
+
+<section class="dog-grid-section">
+  {title && (
+    <div class="dog-grid-header reveal">
+      {subtitle && <div class="section-tag">{subtitle}</div>}
+      <h2 class="dog-grid-title" set:html={title} />
+    </div>
+  )}
+
+  <div class="dog-grid">
+    {dogs.map((dog, i) => (
+      <article class={`dog-card reveal reveal-delay-${Math.min((i % 3) + 1, 5)}`}>
+        <div class="dog-photo-wrap">
+          <img
+            src={dog.photo || placeholder}
+            alt={dog.nickname ? `${dog.name} "${dog.nickname}"` : dog.name}
+            class="dog-photo"
+            width="400"
+            height="480"
+            loading="lazy"
+            onerror={`this.src='${placeholder}'`}
+          />
+          {dog.titles && dog.titles.length > 0 && (
+            <div class="dog-badge">{dog.titles[0]}</div>
+          )}
+        </div>
+        <div class="dog-info">
+          <h3 class="dog-name">{dog.name}</h3>
+          {dog.nickname && <p class="dog-nickname">"{dog.nickname}"</p>}
+          {dog.titles && dog.titles.length > 1 && (
+            <div class="dog-titles">
+              {dog.titles.slice(1).map((t) => <span class="dog-title-tag">{t}</span>)}
+            </div>
+          )}
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .dog-grid-section {
+    padding: 6rem 2.5rem;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  .dog-grid-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .dog-grid-title {
+    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--color-primary);
+  }
+
+  .dog-grid-title :global(em) {
+    font-style: italic;
+    color: var(--color-emphasis);
+  }
+
+  .dog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .dog-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1.5px solid var(--color-surface-alt);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .dog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .dog-photo-wrap {
+    position: relative;
+    aspect-ratio: 5 / 6;
+    overflow: hidden;
+    background: var(--color-surface-alt);
+  }
+
+  .dog-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform 0.4s ease;
+  }
+
+  .dog-card:hover .dog-photo {
+    transform: scale(1.03);
+  }
+
+  .dog-badge {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+  }
+
+  .dog-info {
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+
+  .dog-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    line-height: 1.3;
+    margin-bottom: 0.2rem;
+    font-family: var(--font-display);
+  }
+
+  .dog-nickname {
+    font-size: 0.82rem;
+    color: var(--color-accent);
+    font-style: italic;
+    font-family: var(--font-display);
+  }
+
+  .dog-titles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+  }
+
+  .dog-title-tag {
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    background: var(--color-surface-alt);
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+  }
+
+  @media (max-width: 1024px) {
+    .dog-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .dog-grid-section {
+      padding: 4rem 1.5rem;
+    }
+
+    .dog-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

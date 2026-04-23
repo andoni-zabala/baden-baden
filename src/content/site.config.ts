@@ -1,34 +1,9 @@
-/**
- * ============================================================
- * SITE CONFIG — THE ONE FILE
- * ============================================================
- * Edit this file to configure a new client project.
- * All section components import their content from here.
- *
- * Quick setup checklist:
- *   1. Fill in the `site` block (name, URL, description, locale)
- *   2. Configure `primaryCTA` (type + value + label)
- *   3. Fill in `hero`, `about`, `process`, `services`, etc.
- *   4. Update `structuredData` with the client's business info
- *   5. Replace public/og-image.jpg (1200×630)
- *   6. Replace public/favicon.svg
- *   7. Drop client photos in public/uploads/
- *   8. Update site URL in astro.config.mjs
- *   9. Update sitemap URL in public/robots.txt
- *
- * AI workflow tip: these typed interfaces make content generation
- * reliable — paste a section interface into Claude and ask it to
- * fill the values for "[CLIENT TYPE] in [LANGUAGE]".
- * ============================================================
- */
-
 import type {
   CTAConfig,
   NavLink,
   ServiceItem,
   TestimonialItem,
   ProcessStep,
-  Principle,
   SocialLink,
   FormOption,
   LegalLink,
@@ -36,9 +11,9 @@ import type {
   Credential,
   FloatCard,
   Stat,
+  Dog,
 } from '../types';
 
-// CMS data (written by Decap CMS, merged with TypeScript defaults below)
 import identityData from '../data/identity.json';
 import ctaData from '../data/cta.json';
 import heroData from '../data/hero.json';
@@ -46,161 +21,138 @@ import servicesData from '../data/services.json';
 import testimonialsData from '../data/testimonials.json';
 
 // ─── SITE IDENTITY ────────────────────────────────────────────────────────────
-// Controls: <title>, og:title, og:site_name, nav logo, footer, JSON-LD
 const defaultSite = {
-  name:        '[Business Name]',
-  tagline:     '[Short tagline for this business]',
-  url:         'https://yourdomain.com',
-  locale:      'en',
-  ogLocale:    'en_US',
-  description: 'One-sentence meta description, 150–160 characters. Describe what the business does and who it helps.',
+  name:        'Criadero Baden Baden Dobermanns',
+  tagline:     'Desde 1973 — Excelencia en la cría',
+  url:         'https://www.badenbadendobermann.com',
+  locale:      'es',
+  ogLocale:    'es_AR',
+  description: 'Criadero de Dobermanns de alto nivel desde 1973. Dirigido por el Dr. Javier Fariña, veterinario, docente universitario y juez internacional de la raza.',
   ogImage:     '/og-image.jpg',
-  author:      '[Your Name]',
-  themeColor:  '#1B3A1A',
+  author:      'Dr. Javier Fariña',
+  themeColor:  '#0D0D0D',
 };
 
 export const site = { ...defaultSite, ...(identityData as Partial<typeof defaultSite>) };
 
 // ─── CALL TO ACTION ───────────────────────────────────────────────────────────
-// This single config is consumed by: Hero, HowItWorks, Approach,
-// Testimonials, Contact, Footer, and Nav mobile button.
-// Change this once → updates all 6 CTA locations.
 const defaultCTA: CTAConfig = {
   type:    'whatsapp',
-  value:   '+15551234567',
-  label:   'Book a free call',
-  message: 'Hi! I\'d like to book a free consultation.',
+  value:   '+5491154130401',
+  label:   'Consultar ahora',
+  message: '¡Hola! Me gustaría obtener más información sobre el Criadero Baden Baden.',
 };
 
 export const primaryCTA: CTAConfig = { ...defaultCTA, ...(ctaData as Partial<CTAConfig>) };
 
 export const secondaryCTA: CTAConfig = {
   type:  'url',
-  value: '#how-it-works',
-  label: 'See how it works',
+  value: '/nuestros-dobermanns',
+  label: 'Ver nuestros perros',
 };
 
 // ─── NAVIGATION ───────────────────────────────────────────────────────────────
 export const navigation: NavLink[] = [
-  { label: 'About',        href: '#about'        },
-  { label: 'How it works', href: '#how-it-works' },
-  { label: 'Services',     href: '#services'     },
-  { label: 'Approach',     href: '#approach'     },
-  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Inicio',               href: '/'                    },
+  { label: 'Quiénes Somos',        href: '/quienes-somos'       },
+  { label: 'Nuestros Dobermanns',  href: '/nuestros-dobermanns' },
+  { label: 'Nuevas Lechigadas',    href: '/nuevas-lechigadas'   },
+  { label: 'Obediencia',           href: '/obediencia'          },
+  { label: 'Contacto',             href: '/contacto'            },
 ];
 
 // ─── HERO SECTION ─────────────────────────────────────────────────────────────
 const defaultHero = {
-  eyebrow:      'Now open for new projects',
-  heading:      'Deliver <em>exceptional results</em> for every client.',
-  body:         "I'm [Name], [credential]. I help [your ideal client] achieve [their goal] — with an approach built for your specific situation.",
-  profilePhoto: '/uploads/profile.jpg',
-  badgeLabel:   '[Your Title or Badge]',
+  eyebrow:      'Criadero Baden Baden — Desde 1973',
+  heading:      'Dobermanns de <em>excelencia</em> con carácter y belleza.',
+  body:         'Somos un criadero con más de 50 años de experiencia en la cría selectiva del Dobermann. Dirigido por el Dr. Javier Fariña, médico veterinario, docente universitario y juez internacional de la raza.',
+  profilePhoto: '/images/hero.jpg',
+  badgeLabel:   'Criadero desde 1973',
   floatCards: [
-    { icon: '✓', label: 'Approach',  value: 'Tailored to you' },
-    { icon: '💻', label: 'Available', value: 'Online & in-person' },
+    { icon: '🏆', label: 'Campeones',  value: 'Nacionales e internacionales' },
+    { icon: '🐾', label: 'Raza pura',  value: 'Pedigrí FCA certificado'      },
   ] satisfies FloatCard[],
   stats: [
-    { value: '✓', label: 'Proven process'     },
-    { value: '✓', label: 'Lasting results'    },
-    { value: '✓', label: '100% personalised'  },
+    { value: '+50', label: 'Años de experiencia'  },
+    { value: '+30', label: 'Campeones nacionales'  },
+    { value: '3',   label: 'Países como juez'      },
   ] satisfies Stat[],
 };
 
 export const hero = { ...defaultHero, ...(heroData as Partial<typeof defaultHero>) };
 
-// ─── PAIN POINTS SECTION ─────────────────────────────────────────────────────
-export const painPoints = {
-  eyebrow:         'Sound familiar?',
-  heading:         'Do you find that...?',
-  pains: [
-    "You've worked with others but the results didn't last",
-    "You're not sure where to start or what's right for you",
-    "It's hard to know which option is actually right for you",
-    "You're ready to move forward but not sure where to start",
-  ],
-  transition:      "You're not alone. Most generic approaches fail because they weren't designed for your specific situation.",
-  solutionHeading: 'Here we work differently.',
-  solutions: [
-    'A personalised approach — not a one-size-fits-all solution',
-    'Clear process and transparent communication at every step',
-    'Understand exactly what you need and why',
-    'Real, measurable outcomes without unnecessary complexity',
-  ],
-};
-
 // ─── ABOUT SECTION ───────────────────────────────────────────────────────────
 export const about = {
-  sectionTag: 'About',
-  heading:    'A professional who understands that <em>every situation is different.</em>',
+  sectionTag: 'Quiénes somos',
+  heading:    'El Dr. Javier Fariña y el <em>legado Baden Baden.</em>',
   paragraphs: [
-    'With years of experience working with clients across different backgrounds, I take a personalised, proven approach to help you reach your goals sustainably.',
-    "My specialist training allows me to design plans that work for your specific situation — not just a generic programme.",
+    'El Dr. Javier Fariña es médico veterinario egresado de la Universidad de Buenos Aires y docente en Teriogenología (reproducción animal) en la FCV-UBA. Recibió su primer Dobermann a los 13 años, iniciando así una vida dedicada a la raza.',
+    'Desde la fundación del Criadero Baden Baden en 1973, el Dr. Fariña ha criado y exhibido Dobermanns de alto rendimiento en exposiciones de estructura y pruebas de trabajo. Es juez de exposiciones caninas especializadas en múltiples países y autor de manuales ilustrados sobre el Dobermann.',
   ],
-  photo:       '/uploads/about.jpg',
-  photoAlt:    '[Name] — [Credential]',
+  photo:       '/images/dr-farina.jpg',
+  photoAlt:    'Dr. Javier Fariña — Médico Veterinario',
   credentials: [
-    { icon: '◎', title: '[Credential]',  subtitle: 'Professional qualification' },
-    { icon: '◈', title: '[Specialty 1]', subtitle: 'Area of expertise'          },
-    { icon: '◇', title: '[Specialty 2]', subtitle: 'Area of expertise'          },
+    { icon: '◎', title: 'M.V. UBA',          subtitle: 'Médico Veterinario — Universidad de Buenos Aires'   },
+    { icon: '◈', title: 'Docente FCV-UBA',    subtitle: 'Teriogenología — Facultad de Ciencias Veterinarias' },
+    { icon: '◇', title: 'Juez Internacional', subtitle: 'Exposiciones caninas especializadas'                },
   ] satisfies Credential[],
   values: [
-    'Built for you',
-    'Real results',
-    'Proven process',
-    'Ongoing support',
+    'Cría selectiva',
+    'Salud y carácter',
+    'Estándar de raza',
+    'Apoyo al comprador',
   ],
 };
 
-// ─── PROCESS (HOW IT WORKS) ──────────────────────────────────────────────────
+// ─── PROCESS (CÓMO FUNCIONA) ─────────────────────────────────────────────────
 export const process = {
-  sectionTag: 'The process',
-  heading:    'How it works',
-  subheading: 'Four simple steps to start making lasting progress.',
+  sectionTag: 'El proceso',
+  heading:    'Cómo funciona',
+  subheading: 'Cuatro pasos para sumar un Dobermann Baden Baden a tu familia.',
   steps: [
-    { number: '01', title: 'Get in touch',               body: 'Reach out and we\'ll arrange a convenient time to discuss your needs.' },
-    { number: '02', title: 'We assess your situation', body: 'We take time to understand your goals, history, and what hasn\'t worked before.' },
-    { number: '03', title: 'You receive your plan',    body: 'A personalised plan tailored specifically to you — not a template.' },
-    { number: '04', title: 'We track your progress',   body: 'Ongoing support and check-ins to make sure the plan keeps working as your life evolves.' },
+    { number: '01', title: 'Consulta inicial',     body: 'Comunicate con nosotros por WhatsApp o email para expresar tu interés y hacernos las preguntas que necesitás.'        },
+    { number: '02', title: 'Evaluamos tu caso',    body: 'Conversamos sobre tu estilo de vida, experiencia con la raza y lo que buscás en un Dobermann.'                        },
+    { number: '03', title: 'Reserva tu cachorro',  body: 'Cuando hay camada disponible, podés reservar tu cachorro con un anticipo para asegurar tu lugar.'                      },
+    { number: '04', title: 'Recibís tu Dobermann', body: 'Tu cachorro llegará con vacunas al día, desparasitaciones, chip de identificación y documentación genealógica FCA.'   },
   ] satisfies ProcessStep[],
 };
 
 // ─── SERVICES SECTION ────────────────────────────────────────────────────────
 const defaultServices = {
-  sectionTag:   'Services',
-  heading:      'How can we <em>help you?</em>',
-  subheading:   'Each service is designed to deliver real, lasting value.',
-  areaLabels:   ['Area 1', 'Area 2', 'Area 3', 'Area 4', 'Area 5', 'Area 6'],
-  modalityNote: '📍 Available online and in-person.',
+  sectionTag:   'Programas',
+  heading:      '¿En qué podemos <em>ayudarte?</em>',
+  subheading:   'Desde la cría hasta la obediencia, cubrimos todas las facetas de la raza.',
+  areaLabels:   ['Cría selectiva', 'Exposiciones', 'Obediencia', 'Asesoramiento', 'Genética', 'Salud'],
+  modalityNote: '📍 Criadero ubicado en Buenos Aires, Argentina.',
   items: [
     {
       number:      '01',
-      icon:        '◎',
-      title:       'Starter Package',
-      tagline:     'The right place to begin',
-      description: 'Everything you need to get started — a clear brief, agreed scope, and a first deliverable.',
-      features:    ['Needs assessment', 'Scope definition', 'Initial delivery', 'Feedback round'],
-      price:       'Contact for pricing',
+      icon:        '🐾',
+      title:       'Venta de Cachorros',
+      tagline:     'Lechigadas planificadas con los mejores ejemplares',
+      description: 'Cachorros con pedigrí FCA, vacunados, desparasitados y con asesoramiento post-venta personalizado.',
+      features:    ['Pedigrí FCA', 'Vacunas completas', 'Chip de identificación', 'Asesoramiento post-venta'],
+      price:       'Consultar disponibilidad',
       featured:    true,
     },
     {
       number:      '02',
-      icon:        '◈',
-      title:       'Ongoing Retainer',
-      tagline:     'Stay on track, month to month',
-      description: 'Continued support, regular deliverables, and a direct line so your project keeps moving.',
-      features:    ['Monthly check-ins', 'Priority access', 'Flexible scope', 'Dedicated support'],
-      price:       'Contact for pricing',
+      icon:        '🏆',
+      title:       'Dobermanns de Exposición',
+      tagline:     'Campeones nacionales e internacionales',
+      description: 'Ejemplares seleccionados para competencia bajo el estándar internacional de la raza Dobermann.',
+      features:    ['Linajes campeones', 'Evaluación morfológica', 'Historial de exposiciones', 'Seguimiento profesional'],
+      price:       'Consultar',
       featured:    false,
     },
     {
       number:      '03',
-      icon:        '◇',
-      title:       'Project Engagement',
-      tagline:     'Start to finish, fixed scope',
-      description: 'A defined project with clear milestones — delivered on time and on brief.',
-      features:    ['Fixed deliverables', 'Clear timeline', 'Regular updates', 'Final sign-off'],
-      price:       'Contact for pricing',
+      icon:        '◈',
+      title:       'Programa de Obediencia',
+      tagline:     'SCH y obediencia deportiva',
+      description: 'Entrenamiento en disciplinas de trabajo con los mejores ejemplares del criadero, incluido SCH III.',
+      features:    ['SCH III disponible', 'Entrenadores especializados', 'Seguimiento individual', 'Certificados de trabajo'],
+      price:       'Consultar',
       featured:    false,
     },
   ] satisfies ServiceItem[],
@@ -211,45 +163,32 @@ export const services = {
   ...(servicesData as Partial<typeof defaultServices>),
 };
 
-// ─── APPROACH SECTION ────────────────────────────────────────────────────────
-export const approach = {
-  sectionTag: 'Our approach',
-  quote:      '"[A meaningful quote that captures your professional philosophy and resonates with your ideal client.]"',
-  body:       "Our work is grounded in [your approach]. We focus on [key methodology] because we believe that [core belief that drives your work].",
-  principles: [
-    { title: 'Principle One',   body: 'Brief description of this core principle and why it matters for clients.' },
-    { title: 'Principle Two',   body: 'Brief description of this core principle and why it matters for clients.' },
-    { title: 'Principle Three', body: 'Brief description of this core principle and why it matters for clients.' },
-    { title: 'Principle Four',  body: 'Brief description of this core principle and why it matters for clients.' },
-  ] satisfies Principle[],
-};
-
 // ─── TESTIMONIALS ────────────────────────────────────────────────────────────
 const defaultTestimonials = {
-  sectionTag: 'Testimonials',
-  heading:    'What our clients say',
-  ctaPrompt:  'Ready to get started?',
+  sectionTag: 'Propietarios',
+  heading:    'Lo que dicen nuestros propietarios',
+  ctaPrompt:  '¿Querés sumar un Dobermann a tu familia?',
   items: [
     {
-      quote:  'Working with [Name] completely changed my approach. I finally have a sustainable plan that actually fits my life.',
-      name:   'Client A.',
-      role:   'Profession, City',
-      avatar: 'CA',
-      result: 'Achieved their goal',
+      quote:  'Quique es un perro increíble — un carácter equilibrado, muy social y con una presencia impresionante. El criadero nos acompañó en todo momento.',
+      name:   'Martín G.',
+      role:   'Propietario de Baden Baden Enrique, Buenos Aires',
+      avatar: 'MG',
+      result: 'Campeón Regional',
     },
     {
-      quote:  'After trying so many other approaches, this was the first time I had real support and a plan that made sense for me.',
-      name:   'Client B.',
-      role:   'Profession, City',
-      avatar: 'CB',
-      result: 'Lasting results',
+      quote:  'La seriedad del criadero y el respaldo del Dr. Fariña nos dieron mucha confianza. Hoy tenemos un Dobermann de exposición que es la envidia del ring.',
+      name:   'Claudia P.',
+      role:   'Criadora y expositora, Córdoba',
+      avatar: 'CP',
+      result: 'Top Twenty Argentina',
     },
     {
-      quote:  "The ongoing check-ins make all the difference. I never felt alone in the process, and the results have been life-changing.",
-      name:   'Client C.',
-      role:   'Profession, City',
-      avatar: 'CC',
-      result: 'Better outcomes',
+      quote:  'Nunca esperé tanta dedicación post-venta. Siempre disponibles para cualquier consulta y el cachorro llegó en condiciones perfectas.',
+      name:   'Roberto S.',
+      role:   'Propietario, Rosario',
+      avatar: 'RS',
+      result: 'Familia feliz',
     },
   ] satisfies TestimonialItem[],
 };
@@ -261,75 +200,91 @@ export const testimonials = {
 
 // ─── CONTACT SECTION ─────────────────────────────────────────────────────────
 export const contact = {
-  sectionTag:  'Contact',
-  heading:     'Get in touch <em>today</em>',
-  subheading:  'The fastest way to get started is to reach out directly. We usually respond within a few hours.',
-  email:       'hello@yourdomain.com',
-  location:    'Online & in-person appointments',
-  hours:       'Mon–Fri, 9:00–18:00',
+  sectionTag:  'Contacto',
+  heading:     'Ponete en <em>contacto</em>',
+  subheading:  'La forma más rápida de consultar es vía WhatsApp. También podés enviarnos un mensaje y te respondemos a la brevedad.',
+  email:       'badenbadendobermann@gmail.com',
+  location:    'Buenos Aires, Argentina',
+  hours:       'Lun–Sáb, 9:00–19:00',
   social: [
-    { platform: 'instagram', label: 'Instagram', href: 'https://instagram.com/' },
-    { platform: 'linkedin',  label: 'LinkedIn',  href: 'https://linkedin.com/'  },
+    { platform: 'instagram', label: 'Instagram', href: 'https://www.instagram.com/badenbadendobermann' },
+    { platform: 'facebook',  label: 'Facebook',  href: 'https://www.facebook.com/badenbadendobermann'  },
   ] satisfies SocialLink[],
   formFields: {
-    namePlaceholder:    'Jane Smith',
-    emailPlaceholder:   'jane@email.com',
-    goalLabel:          'What brings you here?',
+    namePlaceholder:    'Juan Pérez',
+    emailPlaceholder:   'juan@email.com',
+    goalLabel:          '¿En qué podemos ayudarte?',
     goalOptions: [
-      { value: 'option-1', label: 'Goal / Reason 1' },
-      { value: 'option-2', label: 'Goal / Reason 2' },
-      { value: 'option-3', label: 'Goal / Reason 3' },
-      { value: 'other',    label: 'Other'            },
+      { value: 'cachorro',   label: 'Me interesa un cachorro'     },
+      { value: 'exposicion', label: 'Dobermann de exposición'      },
+      { value: 'obediencia', label: 'Programa de obediencia'       },
+      { value: 'info',       label: 'Información general'          },
     ] satisfies FormOption[],
-    messageLabel:       'Tell us about your situation',
-    messagePlaceholder: "What are you looking for? Any context helps.",
-    submitLabel:        'Send message',
+    messageLabel:       'Tu consulta',
+    messagePlaceholder: '¿Qué querés saber sobre el criadero o los Dobermanns disponibles?',
+    submitLabel:        'Enviar consulta',
   },
 };
 
 // ─── FOOTER ──────────────────────────────────────────────────────────────────
 export const footer = {
-  tagline: 'Quality work, delivered on time — built around your goals.',
+  tagline: 'Criamos Dobermanns de excelencia desde 1973.',
   legalLinks: [
-    { label: 'Privacy Policy', href: '/privacy' },
-    { label: 'Terms',          href: '/terms'   },
+    { label: 'Privacidad', href: '/privacidad' },
+    { label: 'Términos',   href: '/terminos'   },
   ] satisfies LegalLink[],
 };
 
 // ─── STRUCTURED DATA (JSON-LD) ────────────────────────────────────────────────
-// Powers the JSON-LD generation in Layout.astro.
-// See: https://schema.org/LocalBusiness for businessType options.
 export const structuredData: StructuredDataConfig = {
-  businessType:    'LocalBusiness',
-  personJobTitle:  '[Professional Title]',
-  knowsAbout:      ['[Specialty 1]', '[Specialty 2]', '[Specialty 3]'],
-  credential:      '[Professional Credential]',
+  businessType:    'AnimalShelter',
+  personJobTitle:  'Médico Veterinario y Juez Internacional de Razas Caninas',
+  knowsAbout:      ['Dobermann', 'Cría canina selectiva', 'Exposiciones caninas', 'Teriogenología', 'Adiestramiento de perros'],
+  credential:      'Médico Veterinario — Universidad de Buenos Aires',
   priceRange:      '$$',
-  currency:        'USD',
-  paymentMethods:  'Cash, Credit Card',
+  currency:        'ARS',
+  paymentMethods:  'Efectivo, Transferencia bancaria',
   address: {
-    country:  'US',
-    locality: 'Your City',
-    street:   '',
-    zip:      '',
+    country:  'AR',
+    locality: 'Buenos Aires',
   },
-  areaServed: ['Your City', 'Your Country'],
+  areaServed: ['Buenos Aires', 'Argentina'],
   openingHours: [
-    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '18:00' },
+    { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '19:00' },
   ],
   faq: [
     {
-      question: 'What happens in the first session?',
-      answer:   'We take time to understand your goals, current situation, and what you\'ve tried before. You\'ll leave with a clear initial plan.',
+      question: '¿Cómo puedo reservar un cachorro?',
+      answer:   'Podés consultarnos por WhatsApp o email para conocer la disponibilidad de lechigadas. Cuando hay cachorros disponibles, la reserva se hace con un anticipo.',
     },
     {
-      question: 'Do you offer online sessions?',
-      answer:   'Yes — all sessions are available via video call, giving you complete flexibility wherever you are.',
+      question: '¿Los cachorros tienen pedigrí?',
+      answer:   'Sí, todos nuestros cachorros tienen pedigrí FCA (Federación Cinológica Argentina) y son hijos de ejemplares con historial verificado.',
     },
     {
-      question: 'How long does it take to see results?',
-      answer:   'Most clients notice meaningful progress within the first few weeks. Lasting change typically takes 2–3 months of consistent work together.',
+      question: '¿Realizan envíos al interior del país?',
+      answer:   'Sí, coordinamos el traslado de cachorros a todo el país. Consultanos las condiciones según tu ubicación.',
     },
   ],
-  sameAs: [],
+  sameAs: [
+    'https://www.instagram.com/badenbadendobermann',
+    'https://www.facebook.com/badenbadendobermann',
+  ],
 };
+
+// ─── DOGS ─────────────────────────────────────────────────────────────────────
+export const dogs: Dog[] = [
+  { name: 'Baden Baden Enrique', nickname: 'Quique', photo: '/images/dogs/enrique.jpg',    titles: ['Campeón'],   category: 'show'      },
+  { name: 'Baden Baden Zenyatta', nickname: 'Z',      photo: '/images/dogs/zenyatta.jpg',   titles: ['Campeón'],   category: 'show'      },
+  { name: 'Dark Prince',          nickname: '',        photo: '/images/dogs/dark-prince.jpg', titles: [],           category: 'show'      },
+  { name: 'Blackjack',            nickname: '',        photo: '/images/dogs/blackjack.jpg',  titles: [],           category: 'show'      },
+  { name: 'Elektra',              nickname: '',        photo: '/images/dogs/elektra.jpg',    titles: [],           category: 'show'      },
+  { name: 'Voodoo',               nickname: '',        photo: '/images/dogs/voodoo.jpg',     titles: [],           category: 'show'      },
+  { name: 'Dharma',               nickname: '',        photo: '/images/dogs/dharma.jpg',     titles: [],           category: 'show'      },
+  { name: 'Baden Baden King SCH. III', nickname: 'King', photo: '/images/dogs/king.jpg',   titles: ['SCH. III'], category: 'obedience' },
+  { name: 'Baden Baden Kala',      nickname: 'Kala',   photo: '/images/dogs/kala.jpg',      titles: [],           category: 'obedience' },
+  { name: 'Brisa Black of the Goldeneye', nickname: 'Brisa', photo: '/images/dogs/brisa.jpg', titles: [],        category: 'obedience' },
+  { name: 'Atila von Argus',       nickname: 'Atila',  photo: '/images/dogs/atila.jpg',     titles: [],           category: 'obedience' },
+];
+
+export const obedienceDogs: Dog[] = dogs.filter((d) => d.category === 'obedience');

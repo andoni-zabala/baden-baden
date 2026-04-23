@@ -1,0 +1,343 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/sections/Nav.astro';
+import Footer from '../components/sections/Footer.astro';
+import Button from '../components/primitives/Button.astro';
+import { site, primaryCTA } from '../content/site.config';
+---
+
+<Layout
+  title={`Quiénes Somos — ${site.name}`}
+  description="Conocé la historia del Dr. Javier Fariña y del Criadero Baden Baden Dobermanns, fundado en 1973 en Buenos Aires."
+>
+  <Nav />
+  <main id="main-content">
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <div class="page-hero-content reveal">
+          <div class="section-tag">Quiénes somos</div>
+          <h1 class="page-hero-heading">
+            Más de <em>50 años</em> criando el mejor Dobermann.
+          </h1>
+          <p class="page-hero-body">
+            El Criadero Baden Baden nació en 1973 con una única misión: criar Dobermanns de excelencia con el carácter, la belleza y la salud que la raza merece.
+          </p>
+        </div>
+        <div class="page-hero-photo reveal reveal-delay-2">
+          <img
+            src="/images/dr-farina.jpg"
+            alt="Dr. Javier Fariña — Médico Veterinario"
+            class="hero-photo"
+            width="480"
+            height="560"
+            loading="eager"
+            onerror="this.src='/images/placeholder.svg'"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Bio Section -->
+    <section class="bio-section">
+      <div class="bio-inner">
+        <div class="bio-content reveal">
+          <div class="section-tag">El Dr. Fariña</div>
+          <h2 class="bio-heading">Una vida dedicada <em>al Dobermann.</em></h2>
+
+          <div class="bio-text">
+            <p>
+              El Dr. Javier Fariña es médico veterinario egresado de la Universidad de Buenos Aires y docente en el área de Teriogenología (reproducción animal) en la Facultad de Ciencias Veterinarias de la UBA. Recibió su primer Dobermann a los 13 años, iniciando así una pasión que se convirtió en vocación y profesión.
+            </p>
+            <p>
+              En 1973 fundó el Criadero Baden Baden, que con el tiempo se convirtió en uno de los criaderos de Dobermann más reconocidos de la Argentina. Con décadas de experiencia en la cría selectiva, el Dr. Fariña ha criado y exhibido ejemplares que han obtenido los más altos galardones a nivel nacional e internacional.
+            </p>
+          </div>
+
+          <!-- Timeline -->
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="timeline-year">1973</span>
+              <div class="timeline-body">
+                <h3>Fundación del Criadero</h3>
+                <p>Nace el Criadero Baden Baden en Buenos Aires.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1977</span>
+              <div class="timeline-body">
+                <h3>Juez de Trabajo</h3>
+                <p>Acredita como Juez de Pruebas de Trabajo.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1986</span>
+              <div class="timeline-body">
+                <h3>Juez de Estructura</h3>
+                <p>Acredita como Juez de Morfología para la raza Dobermann.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">1996</span>
+              <div class="timeline-body">
+                <h3>Presidente del Club Dobermann Argentino</h3>
+                <p>Lidera la entidad que nuclea a los criadores y propietarios de la raza en Argentina.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-year">2001</span>
+              <div class="timeline-body">
+                <h3>Director Nacional — Registro Genealógico FCA</h3>
+                <p>Nombrado Director Nacional del Registro Genealógico de la Federación Cinológica Argentina.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Credentials sidebar -->
+        <div class="bio-sidebar reveal reveal-delay-2">
+          <div class="cred-card">
+            <div class="cred-icon">◎</div>
+            <h4>M.V. UBA</h4>
+            <p>Médico Veterinario — Universidad de Buenos Aires</p>
+          </div>
+          <div class="cred-card">
+            <div class="cred-icon">◈</div>
+            <h4>Docente FCV-UBA</h4>
+            <p>Teriogenología — Facultad de Ciencias Veterinarias</p>
+          </div>
+          <div class="cred-card">
+            <div class="cred-icon">◇</div>
+            <h4>Juez Internacional</h4>
+            <p>Exposiciones caninas especializadas en múltiples países</p>
+          </div>
+          <div class="cred-card">
+            <div class="cred-icon">✦</div>
+            <h4>Autor</h4>
+            <p>Manuales ilustrados sobre el Dobermann</p>
+          </div>
+
+          <div class="cta-block">
+            <p class="cta-prompt">¿Querés conocer nuestros perros?</p>
+            <Button cta={primaryCTA} />
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 8rem 2.5rem 5rem;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  .page-hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .page-hero-heading {
+    font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+    line-height: 1.05;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+  }
+
+  .page-hero-heading em {
+    font-style: italic;
+    color: var(--color-emphasis);
+  }
+
+  .page-hero-body {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    font-weight: 300;
+  }
+
+  .hero-photo {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 200px 200px 80px 80px;
+    background: var(--color-surface-alt);
+  }
+
+  /* Bio section */
+  .bio-section {
+    padding: 5rem 2.5rem 8rem;
+    max-width: 1360px;
+    margin: 0 auto;
+  }
+
+  .bio-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .bio-heading {
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 1.1;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+  }
+
+  .bio-heading em {
+    font-style: italic;
+    color: var(--color-emphasis);
+  }
+
+  .bio-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+
+  .bio-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+    font-weight: 300;
+  }
+
+  /* Timeline */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 2px solid var(--color-surface-alt);
+    padding-left: 2rem;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 1rem;
+    padding-bottom: 2rem;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.4rem;
+    top: 0.35rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 2px solid var(--color-surface);
+    box-shadow: 0 0 0 2px var(--color-accent);
+  }
+
+  .timeline-year {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    padding-top: 0.1rem;
+    flex-shrink: 0;
+  }
+
+  .timeline-body h3 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-body p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+  }
+
+  /* Credentials sidebar */
+  .bio-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: sticky;
+    top: 6rem;
+  }
+
+  .cred-card {
+    background: white;
+    border: 1.5px solid var(--color-surface-alt);
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .cred-icon {
+    font-size: 1.3rem;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .cred-card h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin-bottom: 0.3rem;
+  }
+
+  .cred-card p {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .cta-block {
+    margin-top: 0.5rem;
+    padding: 1.5rem;
+    background: var(--color-primary);
+    border-radius: 16px;
+    text-align: center;
+  }
+
+  .cta-prompt {
+    font-size: 0.88rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  @media (max-width: 1024px) {
+    .page-hero-inner,
+    .bio-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .page-hero {
+      padding-top: 6rem;
+    }
+
+    .bio-sidebar {
+      position: static;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .page-hero,
+    .bio-section {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+</style>

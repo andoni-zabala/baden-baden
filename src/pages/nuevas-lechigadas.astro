@@ -1,0 +1,18 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/sections/Nav.astro';
+import Footer from '../components/sections/Footer.astro';
+import LitterHero from '../components/sections/LitterHero.astro';
+import { site } from '../content/site.config';
+---
+
+<Layout
+  title={`Nuevas Lechigadas — ${site.name}`}
+  description="Consultá la disponibilidad de cachorros Dobermann en el Criadero Baden Baden. Lechigadas planificadas con pedigrí FCA y asesoramiento personalizado."
+>
+  <Nav />
+  <main id="main-content">
+    <LitterHero />
+  </main>
+  <Footer />
+</Layout>
